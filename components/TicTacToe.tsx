@@ -213,32 +213,32 @@ const handleRestart = () => {
     <View style={styles.backgroundContainer}>
     <View nativeID='game-container' style={styles.gameContainer}>
       <View style={styles.container}>
-      <View style= {styles.titleView}><Text style ={styles.titleText} >Tic Tac Toe</Text></View>
-      <View style={styles.playerView}><Text style={styles.playerText}>Player X</Text>
-          <Text style={styles.playerText}>{playerXText}</Text></View> 
-          <View style={styles.playerView}><Text style={styles.playerText}>Player O</Text>
-          <Text style={styles.playerText}>{playerOText}</Text></View> 
+      <View testID='txtTitle' style= {styles.titleView}><Text style ={styles.titleText} >Tic Tac Toe</Text></View>
+      <View style={styles.playerView}><Text testID='txtPlayerX' style={styles.playerText}>Player X</Text>
+          <Text testID='txtPlayerXScore' style={styles.playerText}>{playerXText}</Text></View> 
+          <View style={styles.playerView}><Text testID='txtPlayerO' style={styles.playerText}>Player O</Text>
+          <Text testID='txtPlayerOScore' style={styles.playerText}>{playerOText}</Text></View> 
       <View style={styles.buttonView}>
-        <TouchableOpacity  onPress={()=>handleComputerButton()} style={styles.button}>
-          <Text style={styles.buttonText}>{computerButtonText}</Text></TouchableOpacity></View>
+        <TouchableOpacity  testID='btnComputerPlayer' onPress={()=>handleComputerButton()} style={styles.button}>
+          <Text testID='txtComputerPlayer' style={styles.buttonText}>{computerButtonText}</Text></TouchableOpacity></View>
       <View style={styles.buttonView}>
-        <TouchableOpacity onPress={()=>handleRestart()} style={styles.button}>
-          <Text style={styles.buttonText}>{restartText}</Text>
+        <TouchableOpacity testID='btnRestart' onPress={()=>handleRestart()} style={styles.button}>
+          <Text testID='txtRestart' style={styles.buttonText}>{restartText}</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>handleReset()} style={styles.button}>
-          <Text style= {styles.buttonText}>Reset</Text></TouchableOpacity>
+        <TouchableOpacity testID='btnReset' onPress={()=>handleReset()} style={styles.button}>
+          <Text testID='txtReset' style= {styles.buttonText}>Reset</Text></TouchableOpacity>
       </View>
-      <View style= {styles.wiLoseView}><Text style ={styles.playerText} >{winLoseText}</Text></View>
+      <View style= {styles.wiLoseView}><Text testID='txtWinLose' style ={styles.playerText} >{winLoseText}</Text></View>
       </View>
       <View nativeID='board-view' style={styles.boardView}>
-        <View nativeID='board-container' style={styles.boardContainer}>
+        <View testID ='gameBoard' nativeID='board-container' style={styles.boardContainer}>
           {board.map((value, index) => (
             <TouchableOpacity
               key={index}
               style={styles.tile}
               onPress={() => {handlePress(index);}}
               disabled={winState}
-            >
+              testID={`btnXO${index}`}>
               <Text style={styles.tileText}>{value}</Text>
             </TouchableOpacity>
           ))}
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
   boardView: {
     flex: 2,
     alignItems: 'center',
-    padding: 30,
+    padding: 20,
   },
   boardContainer: {
     flexDirection: 'row',
@@ -340,7 +340,7 @@ const styles = StyleSheet.create({
     backgroudColor: 'red'
   },
   tileText: {
-    fontSize: 10
+    fontSize: 35
     
   }, 
   titleText: {
